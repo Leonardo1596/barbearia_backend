@@ -45,7 +45,6 @@ const login = (req, res, next) => {
         .then(async user => {
             if (user) {
                 bcrypt.compare(req.body.password, user.password, async (err, result) => {
-                    1
                     if (err) {
                         res.json({ error: err });
                     }
@@ -55,17 +54,11 @@ const login = (req, res, next) => {
                             expiresIn: '3600s'
                         });
 
-                        // Save user info
-
-
-
                         let userInfo = {
                             _id: user._id,
                             name: user.name,
                             email: user.email,
                         };
-
-                        console.log(userInfo);
 
                         // Successfully
                         console.log(`User: ${user.email} is signed`)

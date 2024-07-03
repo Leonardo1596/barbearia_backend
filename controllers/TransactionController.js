@@ -1,4 +1,5 @@
 const Transaction = require('../models/Transaction');
+const User = require('../models/UserSchema');
 
 const createTransaction = async (req, res) => {
     try {
@@ -18,6 +19,21 @@ const createTransaction = async (req, res) => {
     }
 };
 
+const getTransactions = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const retrievedTransactions = await Transaction.find({ barber: userId }).populate('appointment');
+        const totalAmount = retrievedTransactions.reduce((total, obj) => total + obj.barber_amount, 0);
+
+        res.status(200).json({ retrievedTransactions, totalAmount });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Não foi possível recuperar as transações' });
+    }
+};
+
 module.exports = {
-    createTransaction
+    createTransaction,
+    getTransactions
 };
