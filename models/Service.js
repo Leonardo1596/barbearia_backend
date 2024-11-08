@@ -14,10 +14,6 @@ const ServiceSchema = new Schema({
         type: Number,
         required: true
     },
-    duration: {
-        type: Number,  // Duration in minutes
-        required: true
-    },
     createdAt: {
         type: Date,
         default: Date.now

@@ -17,12 +17,14 @@ const routeUsers = require('./routes/users');
 const routeAppointments = require('./routes/appointments');
 const routeServices = require('./routes/services');
 const routeTransactions = require('./routes/transactions');
+const routeProducts = require('./routes/product');
 
 // Routes
 app.use(routeUsers);
 app.use(routeAppointments);
 app.use(routeServices);
 app.use(routeTransactions);
+app.use(routeProducts);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)

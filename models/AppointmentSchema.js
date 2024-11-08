@@ -7,11 +7,7 @@ const AppointmentSchema = new Schema({
         ref: 'User',
         required: true
     },
-    service: {
-        type: Schema.Types.ObjectId,
-        ref: 'Service',
-        required: true
-    },
+    service: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Service', required: true }],
     client_name: {
         type: String,
         required: true
